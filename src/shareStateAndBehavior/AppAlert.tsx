@@ -1,7 +1,7 @@
 import React from "react";
 
 /* 
-  ? Theoretic concept: Passign children of any kind (including HTML markup) to a component
+  ? Theory concept: Passign children of any kind (including HTML markup) to a component
 */
 
 

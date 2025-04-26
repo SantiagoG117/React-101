@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { CanceledError } from "../services/api-client";
-import userService, { type User } from "../services/user-service";
-import useUsers from "../hooks/useUsers";
+import { CanceledError } from "./services/api-client";
+import userService, { type User } from "./services/user-service";
+import useUsers from "./hooks/useUsers";
 
 /* Service Contains all the logic related to handeling http request */
 

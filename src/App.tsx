@@ -1,4 +1,4 @@
-import AppFetch from "./components/AppFetch";
+import AppFetch from "./AppFetch";
 
 function App() {
   return (

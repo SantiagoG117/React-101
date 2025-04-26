@@ -14,6 +14,7 @@ const useUsers = () => {
     //instance of the service object
     const { request, cancel } = userService.getAll<User>();
 
+    
     request
       .then((response) => setUsers(response.data))
       .catch((error) => {
