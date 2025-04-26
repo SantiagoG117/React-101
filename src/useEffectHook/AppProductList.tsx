@@ -11,7 +11,7 @@ function AppProductList({ category }: { category: string }) {
     useEffect is an 'after render' hook. The code inside this block is called after each render.
     the useEffect hook allows us to add any code that causes side effects and that have nothing to
     do with rendering a JSX markup like:
-      1. Calling a server to store/fetch data
+      1. Calling a server to store/fetch data from an API
       2. Modifying the DOM
       3. Storing data in a local storage of the Browser
     
