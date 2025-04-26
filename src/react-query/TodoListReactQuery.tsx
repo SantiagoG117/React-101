@@ -30,8 +30,9 @@ const TodoListReactQuery = () => {
       3. Automatic refresh: If the data changes while the user is in this page, the page will be re-rendered to reflect the changes
       4. Caching: The fetched data will be stored in the cache and will be fresh for a certain period of time. 
          The next time we need the same piece of data. If it is still in the cache we don't have to fetch it from the server
+      Generic types: <Type of data we are fetching, Type of Error>
   */
-  const { data } = useQuery({
+  const { data, error } = useQuery<Todo[], Error>({
     /* Unique identifier for the query. It is interally used for caching. Everytime we retrieve data from the backend, 
     the data is stored in the cache and can be accessible via the query key 
     We set the key to an array of one or more values. The values depend on the type of data we want to store but the first
@@ -43,7 +44,7 @@ const TodoListReactQuery = () => {
   });
 
   //Return the error message in case of errors
-  //if (error) return <p>{error}</p>;
+  if (error) return <p>{error.message}</p>;
 
   // Render the Todo objects
   return (
