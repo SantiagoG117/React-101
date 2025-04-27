@@ -16,8 +16,6 @@ import React, { useEffect, useState } from "react";
         efficiently in the future. 
         In React applications we can store frequently used data on the client side (inside the user's Browser) 
         so we don't have to fetched from the server everytime its need it.
-    
-
 */
 
 //Define the structure of the Todo object to be retrieve from the server

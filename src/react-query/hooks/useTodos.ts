@@ -8,22 +8,20 @@ export interface Todo {
   completed: boolean;
 }
 
-/* 
-React Query has many benefits:
-    1. Replace the variables for the data,loading and errors state, as well as the effectHook
-    2. We get autoretries in case the the call to the server fails
-    3. Automatic refresh: If the data changes while the user is in this page, the page will be re-rendered to reflect the changes
-    4. Caching: The fetched data will be stored in the cache and will be fresh for a certain period of time. 
-        The next time we need the same piece of data. If it is still in the cache we don't have to fetch it from the server
-    Generic types: <Type of data we are fetching, Type of Error>
-*/
- 
 const useTodos = () => {
   const fetchTodos = () =>
     axios
       .get<Todo[]>("https://jsonplaceholder.typicode.com/todos")
       .then((response) => response.data);
 
+  /* 
+  React Query has many benefits:
+      1. We get autoretries in case the the call to the server fails
+      2. Automatic refresh: If the data changes while the user is in this page, the page will be re-rendered to reflect the changes
+      3. Caching: The fetched data will be stored in the cache and will be fresh . 
+          The next time we need the same piece of data. If it is still in the cache we don't have to fetch it from the server
+      Generic types: <Type of data we are fetching, Type of Error>
+  */
   return useQuery<Todo[], Error>({
     /* Unique identifier for the query. It is interally used for caching. Everytime we retrieve data from the backend, 
         the data is stored in the cache and can be accessible via the query key 
