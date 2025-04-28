@@ -8,7 +8,7 @@ export interface Post {
   userId: number;
 }
 
-const usePosts = (userId: number | undefined) => {
+const usePostsByUser = (userId: number | undefined) => {
   const fetchPosts = () =>
     axios
       .get(
@@ -33,9 +33,9 @@ const usePosts = (userId: number | undefined) => {
       userId is the parameter for this query. Everytime the value for userId changes, react query 
       will fetch the posts for that user from the back-end.
     */
-    queryKey: userId? ["users", userId, "posts"] : ['posts'], //Set up the key dynamically depending of whether or not an userId was selected
+    queryKey: userId ? ["users", userId, "posts"] : ["posts"], //Set up the key dynamically depending of whether or not an userId was selected
     queryFn: fetchPosts,
   });
 };
 
-export default usePosts;
+export default usePostsByUser;
