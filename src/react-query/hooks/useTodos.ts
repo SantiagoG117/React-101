@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { CACHE_KEY_TODOS } from "../constants";
 
 export interface Todo {
   id: number;
@@ -28,7 +29,7 @@ const useTodos = () => {
         We set the key to an array of one or more values. The values depend on the type of data we want to store but the first
         value is often a string that identifies the type of data we want to store.
         */
-    queryKey: ["todos"],
+    queryKey: CACHE_KEY_TODOS,
     /* The function that we use to fetch the data from the backend.*/
     queryFn: fetchTodos,
   });
