@@ -4,7 +4,9 @@ import { current } from "immer";
 
 const TodoForm = () => {
   const ref = useRef<HTMLInputElement>(null);
-  const { error, mutate, isLoading } = useAddTodo(() => { if(ref.current) ref.current.value = ' '});
+  const { error, mutate, isLoading } = useAddTodo(() => {
+    if (ref.current) ref.current.value = " ";
+  });
 
   return (
     <>
@@ -29,9 +31,7 @@ const TodoForm = () => {
           <input ref={ref} type="text" className="form-control" />
         </div>
         <div className="col">
-          <button className="btn btn-primary" disabled={isLoading}>
-            {isLoading ? "Adding..." : "Add"}
-          </button>
+          <button className="btn btn-primary">Add</button>
         </div>
       </form>
     </>

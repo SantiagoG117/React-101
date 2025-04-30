@@ -1,4 +1,4 @@
-import useTodos, { Todo } from "./hooks/useTodos";
+import useTodos from "./hooks/useTodos";
 
 const TodoListReactQuery = () => {
   

@@ -1,19 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import { CACHE_KEY_TODOS } from "../constants";
-
-export interface Todo {
-  id: number;
-  title: string;
-  userId: number;
-  completed: boolean;
-}
+import todoService, { Todo } from "../services/todo-service";
 
 const useTodos = () => {
-  const fetchTodos = () =>
-    axios
-      .get<Todo[]>("https://jsonplaceholder.typicode.com/todos")
-      .then((response) => response.data);
+  const { request } = todoService.getAll();
 
   /* 
   React Query has many benefits:
@@ -31,7 +21,7 @@ const useTodos = () => {
         */
     queryKey: CACHE_KEY_TODOS,
     /* The function that we use to fetch the data from the backend.*/
-    queryFn: fetchTodos,
+    queryFn: () => request,
   });
 };
 

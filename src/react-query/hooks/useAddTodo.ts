@@ -1,8 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Todo } from "./useTodos";
-import axios from "axios";
-import { RefObject } from "react";
 import { CACHE_KEY_TODOS } from "../constants";
+import todoService, { Todo } from "../services/todo-service";
 
 interface AddTodoContext {
   todosBeforeUpdate: Todo[];
@@ -10,13 +8,11 @@ interface AddTodoContext {
 
 const useAddTodo = (onAdd: () => void) => {
   const queryClient = useQueryClient();
+
   //?Mutation hook Generic types: <Type of data we fetch from the Server, Type of Error, Type of data we post to the server, Type of context object>
   const addTodo = useMutation<Todo, Error, Todo, AddTodoContext>({
     //* Mutation function: Responsible for performing the mutation
-    mutationFn: (todo: Todo) =>
-      axios
-        .post<Todo>("https://jsonplaceholder.typicode.com/todos", todo)
-        .then((response) => response.data),
+    mutationFn: (todo: Todo) => todoService.create(todo),
 
     //* Callback function called before the mutation is executed for Optimistic updates. The cache is updated so the UI reflects the updated data quicly, improving User Experience
     onMutate: (newTodo: Todo) => {
@@ -33,7 +29,7 @@ const useAddTodo = (onAdd: () => void) => {
 
       //Function send by the consumer of this hook to specify what to do after the mutation takes place
       onAdd();
-      
+
       return { todosBeforeUpdate }; //Context object with the data before the post request
     },
 
@@ -49,7 +45,10 @@ const useAddTodo = (onAdd: () => void) => {
 
     //* Callback function to be called if the mutation was unsuccessful. context contains the context object returned by onMutate
     onError: (error, newTodo, context) => {
-      queryClient.setQueryData<Todo[]>(CACHE_KEY_TODOS, context?.todosBeforeUpdate);
+      queryClient.setQueryData<Todo[]>(
+        CACHE_KEY_TODOS,
+        context?.todosBeforeUpdate
+      );
     },
   });
 
