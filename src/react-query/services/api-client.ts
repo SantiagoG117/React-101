@@ -2,7 +2,7 @@ import axios, { AxiosInstance } from "axios";
 
 
 
-// Handles sending HTTP requests to the back-end, endpoint provided by the consumer of this class
+// Handles sending HTTP requests to the back-end and endpoint provided by the consumer of this class
 // The type of Data <T> manipulated and fetched in each HTTP request is also defined by the consumer of the class
 class ApiClient<T> {
   endPoint: string;

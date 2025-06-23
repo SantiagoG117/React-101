@@ -3,7 +3,7 @@ import { useState } from "react";
 /*
     ? Theory concept: Properties
     How can we make this component more reusable? 
-    We can use props(Properties) which are the inputs of a component and are used to pass data from a parent component to a child component in React.
+    We can use props (properties) which are the inputs of a component and are used to pass data from a parent component to a child component in React.
     To use props we must first define their shape. For this, we can use an interface to define the data type of the props we wish to use.
 */
 interface Props {

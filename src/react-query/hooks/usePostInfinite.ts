@@ -1,4 +1,4 @@
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 export interface Post {
@@ -33,8 +33,8 @@ const usePostInfinite = (query: PostsQuery) =>
       Infinite queries handle pagination automatically. We use getNextPageParam()
       to calculate the page number. 
       getNextPageParam is a function with two parameters:
-        - lastPage: An array of post
-        - allPages: An array of arrays of Post (contains the data for all pages)
+        - lastPage: An array of posts
+        - allPages: An array of arrays of Posts (contains the data for all pages)
 
        When the user clicks on the load more button react query calls this function
        to get the next page number and pass it to the query function
