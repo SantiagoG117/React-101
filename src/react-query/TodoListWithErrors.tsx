@@ -1,11 +1,10 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 /* 
     ! No separation of concerns or modularity:
         The logic for querying the data is mixed with how the component renders the data. 
-        Moreover, if we need the same logic in another component we need to duplicate it.
-        There is no modularity.
+        If we need the same logic in another component we need to duplicate it. There is no modularity.
 
     ! No automatic refresh: 
         If the data changes while the user is in this page, they won't see the changes unless
@@ -18,7 +17,7 @@ import React, { useEffect, useState } from "react";
         so we don't have to fetched from the server everytime its need it.
 */
 
-//Define the structure of the Todo object to be retrieve from the server
+//Define the structure of the Todo object to be retrieved from the server
 interface Todo {
   id: number;
   title: string;
@@ -33,11 +32,12 @@ const TodoList = () => {
 
   /*
      ?useEffect: Fetches the list of Todos from the API when the component is mounted and rendered 
+     We use the useEffect hook to execute code that can have side effects (like fetching data from an API).
+     It is a good practice to return a clean up function for undoing the effects produced by useEffect in case
+     the user stops using the component and therefore gets unmounted. 
+     In case of HTTP requests this means we should cancel the request.
+     
      ! Problem: No request cancellation if the component is unmounted. 
-        We use the useEffect hook to execute code that can have side effects (like fetching data from an API).
-        It is a good practice to return a clean up function for undoing the effects produced by useEffect in case
-        the user stops using the component and therefore gets unmounted. 
-        In case of HTTP requests this means we should cancel the request.
   */
   useEffect(() => {
     axios

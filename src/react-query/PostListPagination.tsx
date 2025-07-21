@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import usePostPagination from "./hooks/usePostPagination";
 
 function PostListPagination() {
-  const pageSize = 10;
   const [pageNumber, setPageNumber] = useState(1);
   const [userId, setUserId] = useState<number>();
+  const pageSize = 10;
 
   const { data, error, isLoading } = usePostPagination({
     // A query object is a design containing all the values for querying a set of objects
@@ -30,14 +30,12 @@ function PostListPagination() {
         className="btn btn-primary my-3 mx-1"
         disabled={pageNumber === 1}
       >
-        {" "}
         Previous
       </button>
       <button
         onClick={() => setPageNumber(pageNumber + 1)}
         className="btn btn-primary my-3 mx-1"
       >
-        {" "}
         Next
       </button>
     </>

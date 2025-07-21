@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import AppFetch from "./AppFetch";
 import PostListByUser from "./react-query/PostListByUser";
 import PostListInfinite from "./react-query/PostListInfinite";
@@ -9,12 +9,14 @@ import TodoList from "./react-query/TodoListWithErrors";
 import AppCart from "./shareStateAndBehavior/ShoppingCartList";
 import AppNavBar from "./shareStateAndBehavior/ShoppingCartNavBar";
 import ShoppingCart from "./shareStateAndBehavior/ShoppingCart";
+import axios, { AxiosError } from "axios";
+import PostList from "./react-query/PostList";
+import Counter from "./state-management/Counter";
 
-//TODO: Implement handleOnClearCart function
 function App() {
   return (
     <>
-      <ShoppingCart></ShoppingCart>
+      <Counter></Counter>
     </>
   );
 }

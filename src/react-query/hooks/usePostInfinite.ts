@@ -8,7 +8,7 @@ export interface Post {
   userId: number;
 }
 
-export interface PostsQuery {
+interface PostsQuery {
   pageSize: number;
 }
 

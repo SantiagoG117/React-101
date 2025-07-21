@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import usePostInfinite from "./hooks/usePostInfinite";
+import usePostListInfinite from "./hooks/usePostListInfinite";
 
 function PostListInfinite() {
-  const pageSize = 10;
+  const pageSize = 5;
   const { data, error, isLoading, fetchNextPage, isFetchingNextPage } =
-    usePostInfinite({
+    usePostListInfinite({
       // A query object is a design containing all the values for querying a set of objects
       pageSize,
     });
@@ -17,7 +17,7 @@ function PostListInfinite() {
     <>
       <ul className="list-group">
         {/* 
-            data is an instance of InfiniteData. The pages parameter contains the data for all pages
+            data is an instance of InfiniteData. The pages[][] parameter is a twp-dimensional array containing the data for all pages
             We must iterate over each page and render the data for each page separately
         */}
         {data.pages.map((page, index) => (
@@ -32,7 +32,7 @@ function PostListInfinite() {
       </ul>
       <button
         disabled={isFetchingNextPage}
-        onClick={() => fetchNextPage()} //calls getNextPageParam in the user to calculate the next page number
+        onClick={() => fetchNextPage()} //calls getNextPageParam in the user to get the next page number
         className="btn btn-primary my-3 mx-1"
       >
         {isFetchingNextPage ? "Loading..." : "Load More"}

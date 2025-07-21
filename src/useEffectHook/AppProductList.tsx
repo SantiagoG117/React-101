@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 function AppProductList({ category }: { category: string }) {
   const [products, setProducts] = useState<string[]>([]);
@@ -9,8 +9,8 @@ function AppProductList({ category }: { category: string }) {
     Fetch all the products from a server:
 
     useEffect is an 'after render' hook. The code inside this block is called after each render.
-    the useEffect hook allows us to add any code that causes side effects and that have nothing to
-    do with rendering a JSX markup like:
+    
+    The useEffect hook allows us to add any code that causes side effects and that have nothing to do with rendering a JSX markup:
       1. Calling a server to store/fetch data from an API
       2. Modifying the DOM
       3. Storing data in a local storage of the Browser
