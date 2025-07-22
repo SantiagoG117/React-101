@@ -1,9 +1,8 @@
 /* 
-    ? Reducer: A function that allows us to encapsulate a component's state updates in a separate function.
+    ? Reducer: A function that encapsulates a component's state logic
 
-    As a component grows in complexity. Keeping track on how a state gets updated also becomes more challenging.
-    With a reducer we can extract the state management logic of a component and centralize it inside a single function.
-
+    As a component grows in complexity it becomes more challenging to keep track of its state logic.
+    A Reducer extracts the state management complexity away from the component
     params:
         - state: current state
         - action: an object that describes what the user is trying to do

@@ -12,11 +12,13 @@ import ShoppingCart from "./shareStateAndBehavior/ShoppingCart";
 import axios, { AxiosError } from "axios";
 import PostList from "./react-query/PostList";
 import Counter from "./state-management/Counter";
+import TaskList from "./state-management/TaskList";
+import LoginStatus from "./state-management/LoginStatus";
 
 function App() {
   return (
     <>
-      <Counter></Counter>
+      <LoginStatus></LoginStatus>
     </>
   );
 }
