@@ -1,9 +1,10 @@
-import { useReducer, useState } from "react";
+import { useContext, useReducer, useState } from "react";
 import authReducer from "./reducers/authReducer";
+import AuthContext from "./contexts/authContext";
 
 const LoginStatus = () => {
   // const [user, setUser] = useState("");
-  const [user, dispatch] = useReducer(authReducer, "");
+  const { user, dispatch } = useContext(AuthContext);
   const [username, setUserName] = useState("");
 
   if (user)
@@ -22,7 +23,7 @@ const LoginStatus = () => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          dispatch({ type: "LOGIN", username: username });
+          dispatch({ type: "LOGIN", username });
         }}
       >
         <input

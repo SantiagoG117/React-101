@@ -11,7 +11,12 @@ interface Logout {
   type: "LOGOUT";
 }
 
-type AuthAction = Login | Logout;
+export type AuthAction = Login | Logout;
+
+/* 
+  ? A reducer extracts the state management complexity away from a component and 
+  ? encapsulates it inside a reusable function
+*/
 
 const authReducer = (user: string, action: AuthAction): string => {
   switch (action.type) {

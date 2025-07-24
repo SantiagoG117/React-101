@@ -1,4 +1,4 @@
-interface Task {
+export interface Task {
   id: number;
   title: string;
 }
@@ -19,10 +19,10 @@ interface DeleteTask {
 - Allows the reducer to handle the required extra data for adding or deleting tasks
 - Helps TypeScript to ensure that only valid actions with the correct structure are used when updating the state
 */
-type TaskAction = AddTask | DeleteTask;
+export type TaskAction = AddTask | DeleteTask;
 
 /* 
-    ? A Reducer extracts the state management complexity away from a component and encapsulates inside a reusable function
+    ? A Reducer extracts the state management complexity away from a component and encapsulates it inside a reusable function
 
     params:
         - tasks: current state
