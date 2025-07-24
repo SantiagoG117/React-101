@@ -6,6 +6,8 @@ import HomePage from "./state-management/HomePage";
 import TaskContext from "./state-management/contexts/tasksContext";
 import authReducer from "./state-management/reducers/authReducer";
 import AuthContext from "./state-management/contexts/authContext";
+import AuthProvider from "./state-management/providers/AuthProvider";
+import TasksProvider from "./state-management/providers/tasksProvider";
 
 /* 
   To share the state with React context there are three things we need to do:
@@ -16,24 +18,23 @@ import AuthContext from "./state-management/contexts/authContext";
     3. Access the shared state using the context hook in our component tree
 
 */
-function App() {
-  // Maintains local state in a component
-  const [tasks, tasksDispatch] = useReducer(taskReducer, []);
-  const [user, authDispatch] = useReducer(authReducer, "");
 
+/* 
+  TODO:
+    Create a custom provider for sharing tasks
+    Create a custom Hook for accessing the share tasks
+
+*/
+function App() {
   return (
     <>
-      {/*
-        We use context to dispatch state across the component tree. It works like a truck transporting a states
-        so we can access it anywhare in our component tree
-        Now we can access this box anywhere in our component tree
-      */}
-      <AuthContext.Provider value={{ user, dispatch: authDispatch }}>
-        <TaskContext.Provider value={{ tasks, dispatch: tasksDispatch }}>
+      {/* We use context to dispatch state across the component tree. It works like a truck transporting a states across the component tree*/}
+      <AuthProvider>
+        <TasksProvider>
           <NavBar />
           <HomePage />
-        </TaskContext.Provider>
-      </AuthContext.Provider>
+        </TasksProvider>
+      </AuthProvider>
     </>
   );
 }

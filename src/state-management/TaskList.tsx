@@ -1,10 +1,14 @@
 import { useContext, useReducer } from "react";
 import taskReducer from "./reducers/taskReducer";
 import TaskContext from "./contexts/tasksContext";
+import AuthContext from "./contexts/authContext";
+import useAuth from "./hooks/useAuth";
+import useTasks from "./hooks/useTasks";
 
 const TaskList = () => {
   // Access the context payload
-  const { tasks, dispatch } = useContext(TaskContext);
+  const { tasks, dispatch } = useTasks();
+  const { user } = useAuth();
 
   return (
     <>
@@ -26,7 +30,9 @@ const TaskList = () => {
             key={task.id}
             className="list-group-item d-flex justify-content-between align-items-center"
           >
-            <span className="flex-grow-1">{task.title}</span>
+            <span className="flex-grow-1">
+              {task.title} created by {user}
+            </span>
             <button
               className="btn btn-outline-danger"
               onClick={() => dispatch({ type: "DELETE", taskId: task.id })}
