@@ -1,6 +1,6 @@
 import { Dispatch } from "react";
-import { Task, TaskAction } from "../reducers/taskReducer";
 import React from "react";
+import { Task, TaskAction } from "./tasksProvider";
 
 //? React context works like a truck transporting a box. Inside that box we can have some state.
 

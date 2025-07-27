@@ -1,14 +1,13 @@
-import { useContext, useReducer } from "react";
-import taskReducer from "./reducers/taskReducer";
-import TaskContext from "./contexts/tasksContext";
-import AuthContext from "./contexts/authContext";
-import useAuth from "./hooks/useAuth";
-import useTasks from "./hooks/useTasks";
+import { useContext } from "react";
+import useAuth from "../auth/useAuth";
+import TaskContext from "./tasksContext";
+import useAuthStore from "../authZustand/authStore";
 
 const TaskList = () => {
   // Access the context payload
-  const { tasks, dispatch } = useTasks();
-  const { user } = useAuth();
+  const { tasks, dispatch } = useContext(TaskContext);
+  // const { user } = useAuth();
+  const { username } = useAuthStore();
 
   return (
     <>
@@ -31,7 +30,7 @@ const TaskList = () => {
             className="list-group-item d-flex justify-content-between align-items-center"
           >
             <span className="flex-grow-1">
-              {task.title} created by {user}
+              {task.title} created by {username}
             </span>
             <button
               className="btn btn-outline-danger"

@@ -1,8 +1,8 @@
+import { Dispatch } from "react";
+import React from "react";
+import { AuthAction } from "./AuthProvider";
 //? React Context work like a truck transporting a box, in which we can save some state
 
-import { Dispatch } from "react";
-import { AuthAction } from "../reducers/authReducer";
-import React from "react";
 
 //? Define the shape of the state we wish the transport (Shape of the box)
 interface AuthContextType {
