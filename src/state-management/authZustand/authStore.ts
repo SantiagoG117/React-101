@@ -1,5 +1,5 @@
 /* 
-    ? Zustand is a state management library that allows us to create global Stores  to manage and share state across compnents using custom hooks
+    ? Zustand is a state management library that allows us to create global Stores to manage and share state across compnents using custom hooks
     * A Store is the object that holds the component's state and the functions (actions) that update that state 
 
     To use Zustand to manage the state of our application we must:

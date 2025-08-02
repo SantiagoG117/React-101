@@ -13,8 +13,6 @@ function App() {
       {/* We use context to dispatch state across the component tree. It works like a truck transporting a states across the component tree*/}
       <AuthProvider>
         <TasksProvider>
-          <Counter />
-          <NavBar />
           <HomePage />
         </TasksProvider>
       </AuthProvider>
